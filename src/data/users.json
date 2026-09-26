@@ -1,0 +1,27 @@
+[
+  {
+    "id": "usr_001",
+    "email": "admin@luxe.com",
+    "password": "admin123",
+    "name": "Admin LUXE",
+    "role": "admin",
+    "avatar": "/luxe_logo_1790064437094.jpg",
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "usr_002",
+    "email": "user@luxe.com",
+    "password": "user123",
+    "name": "Sarah Johnson",
+    "role": "customer",
+    "createdAt": "2024-03-15T10:30:00.000Z"
+  },
+  {
+    "id": "usr_003",
+    "email": "demo@luxe.com",
+    "password": "demo123",
+    "name": "Emma Williams",
+    "role": "customer",
+    "createdAt": "2024-06-20T08:00:00.000Z"
+  }
+]

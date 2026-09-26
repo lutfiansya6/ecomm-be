@@ -1,0 +1,137 @@
+[
+  {
+    "id": "ord_001",
+    "userId": "usr_002",
+    "items": [
+      {
+        "productId": "prd_001",
+        "quantity": 1,
+        "size": "M",
+        "color": "Black",
+        "product": {
+          "id": "prd_001",
+          "name": "Noir Slit Gown",
+          "price": 4850000,
+          "images": ["/product_dress_1_1790064527682.jpg"]
+        }
+      },
+      {
+        "productId": "prd_004",
+        "quantity": 1,
+        "size": "38",
+        "color": "Black/Gold",
+        "product": {
+          "id": "prd_004",
+          "name": "Aurea Stiletto",
+          "price": 5600000,
+          "images": ["/product_shoes_1_1790064655581.jpg"]
+        }
+      }
+    ],
+    "address": {
+      "fullName": "Sarah Johnson",
+      "phone": "08123456789",
+      "street": "Jl. Sudirman No. 45, Apt 12B",
+      "city": "Jakarta Pusat",
+      "province": "DKI Jakarta",
+      "postalCode": "10220",
+      "country": "Indonesia"
+    },
+    "paymentMethod": "credit_card",
+    "paymentStatus": "paid",
+    "orderStatus": "delivered",
+    "subtotal": 10450000,
+    "shipping": 0,
+    "tax": 1045000,
+    "total": 11495000,
+    "notes": "",
+    "createdAt": "2026-09-01T10:00:00.000Z",
+    "updatedAt": "2026-09-05T14:00:00.000Z"
+  },
+  {
+    "id": "ord_002",
+    "userId": "usr_002",
+    "items": [
+      {
+        "productId": "prd_002",
+        "quantity": 1,
+        "size": "S",
+        "color": "Black",
+        "product": {
+          "id": "prd_002",
+          "name": "Goldmaster Blazer",
+          "price": 3750000,
+          "images": ["/product_blazer_1_1790064551000.jpg"]
+        }
+      }
+    ],
+    "address": {
+      "fullName": "Sarah Johnson",
+      "phone": "08123456789",
+      "street": "Jl. Sudirman No. 45, Apt 12B",
+      "city": "Jakarta Pusat",
+      "province": "DKI Jakarta",
+      "postalCode": "10220",
+      "country": "Indonesia"
+    },
+    "paymentMethod": "gopay",
+    "paymentStatus": "paid",
+    "orderStatus": "shipped",
+    "subtotal": 3750000,
+    "shipping": 50000,
+    "tax": 375000,
+    "total": 4175000,
+    "notes": "Please gift wrap",
+    "createdAt": "2026-09-15T08:30:00.000Z",
+    "updatedAt": "2026-09-16T10:00:00.000Z"
+  },
+  {
+    "id": "ord_003",
+    "userId": "usr_003",
+    "items": [
+      {
+        "productId": "prd_003",
+        "quantity": 1,
+        "size": "One Size",
+        "color": "Black",
+        "product": {
+          "id": "prd_003",
+          "name": "Obsidian Chain Bag",
+          "price": 8900000,
+          "images": ["/product_bag_1_1790064566991.jpg"]
+        }
+      },
+      {
+        "productId": "prd_006",
+        "quantity": 2,
+        "size": "One Size",
+        "color": "Gold/Navy",
+        "product": {
+          "id": "prd_006",
+          "name": "Aurore Silk Scarf",
+          "price": 1850000,
+          "images": ["/product_scarf_1_1790064780482.jpg"]
+        }
+      }
+    ],
+    "address": {
+      "fullName": "Emma Williams",
+      "phone": "08987654321",
+      "street": "Jl. Gatot Subroto No. 12",
+      "city": "Jakarta Selatan",
+      "province": "DKI Jakarta",
+      "postalCode": "12930",
+      "country": "Indonesia"
+    },
+    "paymentMethod": "cod",
+    "paymentStatus": "pending",
+    "orderStatus": "confirmed",
+    "subtotal": 12600000,
+    "shipping": 50000,
+    "tax": 1260000,
+    "total": 13910000,
+    "notes": "",
+    "createdAt": "2026-09-20T14:00:00.000Z",
+    "updatedAt": "2026-09-20T14:05:00.000Z"
+  }
+]

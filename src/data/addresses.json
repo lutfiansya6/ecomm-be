@@ -1,0 +1,53 @@
+[
+  {
+    "id": "addr_001",
+    "userId": "usr_002",
+    "label": "Rumah",
+    "fullName": "Sarah Johnson",
+    "phone": "08123456789",
+    "street": "Jl. Sudirman No. 45, Apt 12B",
+    "province": "DKI JAKARTA",
+    "city": "KOTA JAKARTA PUSAT",
+    "district": "TANAH ABANG",
+    "village": "GELORA",
+    "postalCode": "10270",
+    "country": "Indonesia",
+    "isDefault": true,
+    "createdAt": "2024-03-15T10:30:00.000Z",
+    "updatedAt": "2024-03-15T10:30:00.000Z"
+  },
+  {
+    "id": "addr_002",
+    "userId": "usr_002",
+    "label": "Kantor",
+    "fullName": "Sarah Johnson",
+    "phone": "08123456789",
+    "street": "Menara Astra Lt. 28, Jl. Jend. Sudirman Kav. 5-6",
+    "province": "DKI JAKARTA",
+    "city": "KOTA JAKARTA PUSAT",
+    "district": "SETIABUDI",
+    "village": "KARET",
+    "postalCode": "12920",
+    "country": "Indonesia",
+    "isDefault": false,
+    "createdAt": "2024-03-20T11:00:00.000Z",
+    "updatedAt": "2024-03-20T11:00:00.000Z"
+  },
+  {
+    "id": "addr_003",
+    "userId": "usr_003",
+    "label": "Utama",
+    "fullName": "Emma Williams",
+    "phone": "08987654321",
+    "street": "Jl. Gatot Subroto No. 12",
+    "province": "DKI JAKARTA",
+    "city": "KOTA JAKARTA SELATAN",
+    "district": "MAMPANG PRAPATAN",
+    "village": "KUNINGAN BARAT",
+    "postalCode": "12710",
+    "country": "Indonesia",
+    "isDefault": true,
+    "createdAt": "2024-06-20T08:00:00.000Z",
+    "updatedAt": "2024-06-20T08:00:00.000Z"
+  }
+]
