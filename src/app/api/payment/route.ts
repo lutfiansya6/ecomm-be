@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   if (!authUser) return errorResponse('Unauthorized', 401);
 
   try {
-    const { orderId, method, cardNumber, cardExpiry, cardCvv, cardName } = await request.json();
+    const { orderId, method, cardNumber, cardExpiry, cardCvv, cardName, forceSuccess } = await request.json();
 
     if (!orderId || !method) {
       return errorResponse('orderId dan method wajib diisi', 400);
@@ -45,8 +45,8 @@ export async function POST(request: Request) {
       }
     }
 
-    // Mock: 90% success rate
-    const isSuccess = Math.random() > 0.1;
+    // QRIS & forceSuccess always succeed for seamless testing
+    const isSuccess = forceSuccess || method === 'gopay' || method === 'qris' ? true : Math.random() > 0.1;
     const txId = generateTxId();
 
     if (isSuccess) {
@@ -56,12 +56,14 @@ export async function POST(request: Request) {
         updatedAt: new Date().toISOString(),
       });
 
+      const methodName = method === 'gopay' || method === 'qris' ? 'QRIS / GoPay' : method === 'credit_card' ? 'Kartu Kredit' : 'COD';
+
       const result: PaymentResult = {
         success: true,
         transactionId: txId,
         message: method === 'cod'
           ? 'Order dikonfirmasi! Bayar saat barang tiba.'
-          : `Pembayaran berhasil via ${method === 'gopay' ? 'GoPay' : 'Kartu Kredit'}`,
+          : `Pembayaran berhasil via ${methodName}`,
         method,
         amount: order.total,
       };

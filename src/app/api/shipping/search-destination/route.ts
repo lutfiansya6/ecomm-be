@@ -1,4 +1,4 @@
-﻿// GET /api/shipping/search-destination?keyword=xxx
+// GET /api/shipping/search-destination?keyword=xxx
 import { searchDestination } from '@/lib/shipping';
 import { successResponse, errorResponse } from '@/lib/utils';
 import { NextRequest } from 'next/server';
