@@ -35,9 +35,17 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
+    if (body.description !== undefined && typeof body.description !== 'string') {
+      return errorResponse('description harus berupa teks', 400);
+    }
+    if (body.shortDescription !== undefined && typeof body.shortDescription !== 'string') {
+      return errorResponse('shortDescription harus berupa teks', 400);
+    }
     const product: Product = {
       id: generateId('prd'),
       ...body,
+      description: body.description ?? '',
+      shortDescription: body.shortDescription ?? '',
       createdAt: new Date().toISOString(),
     };
     db.products.create(product);

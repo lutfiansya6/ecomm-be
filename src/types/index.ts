@@ -16,7 +16,8 @@ export interface Product {
   id: string;
   name: string;
   slug: string;
-  description: string;
+  description: string; // full description
+  shortDescription?: string; // 1-2 sentence summary
   price: number;
   comparePrice?: number;
   category: 'dress' | 'blazer' | 'bag' | 'shoes' | 'coat' | 'accessories';
@@ -30,6 +31,25 @@ export interface Product {
   reviewCount: number;
   tags: string[];
   createdAt: string;
+}
+
+export type ReviewStatus = 'published' | 'hidden';
+
+export interface Review {
+  id: string;
+  productId: string;
+  orderId: string;
+  userId: string;
+  userName: string;
+  rating: number; // 1-5
+  comment: string;
+  status: ReviewStatus;
+  createdAt: string;
+}
+
+export interface ReviewSummary {
+  averageRating: number;
+  reviewCount: number;
 }
 
 export interface CartItem {

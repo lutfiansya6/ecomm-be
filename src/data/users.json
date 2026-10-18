@@ -23,5 +23,21 @@
     "name": "Emma Williams",
     "role": "customer",
     "createdAt": "2024-06-20T08:00:00.000Z"
+  },
+  {
+    "id": "usr_1792321351686_f3znz",
+    "email": "clara@example.com",
+    "password": "password123",
+    "name": "Clara Oswald",
+    "role": "customer",
+    "createdAt": "2026-10-18T11:02:31.687Z"
+  },
+  {
+    "id": "usr_1792321650211_767cx",
+    "email": "john@luxe.com",
+    "password": "john123",
+    "name": "john",
+    "role": "customer",
+    "createdAt": "2026-10-18T11:07:30.212Z"
   }
 ]

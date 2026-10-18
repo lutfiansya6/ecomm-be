@@ -46,6 +46,19 @@ export function errorResponse(message: string, status = 400): Response {
   });
 }
 
+/** Strip HTML tags and angle brackets from user text (XSS prevention) */
+export function sanitizeText(input: string): string {
+  let prev: string;
+  let out = input;
+  do {
+    prev = out;
+    out = out
+      .replace(/<(script|style)[\s\S]*?<\/\1\s*>/gi, '')
+      .replace(/<[^>]*>/g, '');
+  } while (out !== prev);
+  return out.replace(/[<>]/g, '').trim();
+}
+
 /** Generate dummy transaction ID */
 export function generateTxId(): string {
   return `TXN-${Date.now()}-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;

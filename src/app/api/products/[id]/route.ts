@@ -24,6 +24,12 @@ export async function PUT(
 
   const { id } = await params;
   const body = await request.json();
+  if (body.description !== undefined && typeof body.description !== 'string') {
+    return errorResponse('description harus berupa teks', 400);
+  }
+  if (body.shortDescription !== undefined && typeof body.shortDescription !== 'string') {
+    return errorResponse('shortDescription harus berupa teks', 400);
+  }
   const updated = db.products.update(id, body);
   if (!updated) return errorResponse('Produk tidak ditemukan', 404);
   return successResponse(updated);

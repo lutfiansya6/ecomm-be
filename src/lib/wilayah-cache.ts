@@ -1,10 +1,11 @@
-// ============================================================
+﻿// ============================================================
 // LUXE — Wilayah Indonesia in-memory cache
 // Caches static data from emsifa.com to avoid repeated fetches
 // ============================================================
 
 const EMSIFA_BASE = 'https://www.emsifa.com/api-wilayah-indonesia/v2';
-const FETCH_TIMEOUT_MS = 8000;
+const FETCH_TIMEOUT_MS = 12000;
+const FETCH_RETRIES = 2; // total attempts = 1 + FETCH_RETRIES
 
 // ─── Types ────────────────────────────────────────────────
 export interface Province {
@@ -47,7 +48,7 @@ function isFresh(ts: number): boolean {
 }
 
 // ─── Fetch helper with timeout + error ────────────────────
-async function fetchWithTimeout<T>(url: string): Promise<T> {
+async function fetchOnce<T>(url: string): Promise<T> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
   try {
@@ -64,6 +65,20 @@ async function fetchWithTimeout<T>(url: string): Promise<T> {
   } finally {
     clearTimeout(timer);
   }
+}
+// Retry transient failures (timeout / 5xx / network). 4xx is not retried.
+async function fetchWithTimeout<T>(url: string): Promise<T> {
+  let lastErr: unknown;
+  for (let attempt = 0; attempt <= FETCH_RETRIES; attempt++) {
+    try {
+      return await fetchOnce<T>(url);
+    } catch (err) {
+      lastErr = err;
+      if (err instanceof Error && /HTTP 4\d\d/.test(err.message)) break;
+      await new Promise((r) => setTimeout(r, 400 * (attempt + 1)));
+    }
+  }
+  throw lastErr;
 }
 
 // ─── Extract helper ───────────────────────────────────────
@@ -116,3 +131,4 @@ export async function getVillages(districtId: string): Promise<Village[]> {
   villagesCache.set(districtId, { data, ts: Date.now() });
   return data;
 }
+

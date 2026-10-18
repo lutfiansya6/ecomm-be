@@ -49,5 +49,22 @@
     "isDefault": true,
     "createdAt": "2024-06-20T08:00:00.000Z",
     "updatedAt": "2024-06-20T08:00:00.000Z"
+  },
+  {
+    "id": "addr_1792321685143_y5pme",
+    "userId": "usr_1792321650211_767cx",
+    "label": "Rumah",
+    "fullName": "john",
+    "phone": "659854745768",
+    "street": "bbdhfdfgg 454 rgrwehhfhfshet ryrfdhdhfdhdh",
+    "province": "Maluku Utara",
+    "city": "Kota Ternate",
+    "district": "Kota Ternate Selatan",
+    "village": "Mangga Dua Utara",
+    "postalCode": "97713",
+    "country": "Indonesia",
+    "isDefault": true,
+    "createdAt": "2026-10-18T11:08:05.143Z",
+    "updatedAt": "2026-10-18T11:08:05.143Z"
   }
 ]
