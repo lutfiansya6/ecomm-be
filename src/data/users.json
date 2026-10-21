@@ -39,5 +39,13 @@
     "name": "john",
     "role": "customer",
     "createdAt": "2026-10-18T11:07:30.212Z"
+  },
+  {
+    "id": "usr_1792483029781_qs841",
+    "email": "test_user_stock@luxe.com",
+    "password": "password123",
+    "name": "Test User",
+    "role": "customer",
+    "createdAt": "2026-10-20T07:57:09.781Z"
   }
 ]

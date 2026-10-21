@@ -28,10 +28,30 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const authUser = await getAuthUser(request);
-  if (!authUser || authUser.role !== 'admin') return errorResponse('Unauthorized', 403);
+  if (!authUser) return errorResponse('Unauthorized', 401);
 
   const { id } = await params;
-  const body = await request.json();
+  const existingOrder = db.orders.findById(id);
+  if (!existingOrder) return errorResponse('Order tidak ditemukan', 404);
+
+  const isAdmin = authUser.role === 'admin';
+  const isOwner = existingOrder.userId === authUser.userId;
+  if (!isAdmin && !isOwner) {
+    return errorResponse('Forbidden', 403);
+  }
+
+  let body: Record<string, unknown>;
+  try {
+    body = (await request.json()) as Record<string, unknown>;
+  } catch {
+    return errorResponse('Data tidak valid', 400);
+  }
+
+  // Non-admin can only cancel their own order
+  if (!isAdmin && body.orderStatus !== 'cancelled') {
+    return errorResponse('Forbidden: hanya admin yang dapat mengubah status selain pembatalan', 403);
+  }
+
   const updated = db.orders.update(id, {
     ...body,
     updatedAt: new Date().toISOString(),

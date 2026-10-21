@@ -12,6 +12,51 @@ export interface User {
   createdAt: string;
 }
 
+export interface ColorVariant {
+  name: string;
+  hex: string;
+  images: string[];
+  /** Harga jual khusus warna ini. Jika kosong, pakai Product.price */
+  price?: number;
+  /** Stok per ukuran untuk varian ini. Kunci adalah ukuran di daftar Product.sizes, nilai integer >= 0 */
+  sizeStock: Record<string, number>;
+  /** Stok khusus warna ini (nilai turunan: jumlah semua ukuran di sizeStock) */
+  stock: number;
+}
+
+
+export interface Category {
+  id: string;
+  name: string;
+  slug: string;
+  order: number;
+  active: boolean;
+  createdAt: string;
+  productCount?: number;
+}
+
+export type NavigationItemType = 'all' | 'new' | 'sale' | 'category' | 'url';
+
+export interface NavigationChildCategory {
+  id?: string;
+  name: string;
+  slug: string;
+}
+
+export interface NavigationItem {
+  id: string;
+  label: string;
+  type: NavigationItemType;
+  target: string;
+  accent: boolean;
+  order: number;
+  active: boolean;
+  system: boolean;
+  childCategoryIds?: string[];
+  children?: NavigationChildCategory[];
+  createdAt: string;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -20,10 +65,12 @@ export interface Product {
   shortDescription?: string; // 1-2 sentence summary
   price: number;
   comparePrice?: number;
-  category: 'dress' | 'blazer' | 'bag' | 'shoes' | 'coat' | 'accessories';
+  categoryId: string;
+  category: string;
   images: string[];
   sizes: string[];
   colors: string[];
+  colorVariants?: ColorVariant[];
   stock: number;
   weight?: number; // in grams, defaults to 500g
   featured: boolean;
@@ -58,6 +105,8 @@ export interface CartItem {
   quantity: number;
   size: string;
   color: string;
+  /** Harga satuan saat checkout (harga varian warna, atau harga produk jika kosong) */
+  price?: number;
 }
 
 export interface Cart {

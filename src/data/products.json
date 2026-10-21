@@ -6,16 +6,66 @@
     "description": "An exquisitely crafted floor-length gown in pure matte crepe. The dramatic side slit and open back make this the definitive statement piece for the modern icon. Fully lined with a delicate gold-tipped zipper closure.",
     "price": 4850000,
     "comparePrice": 6200000,
-    "category": "dress",
-    "images": ["/product_dress_1_1790064527682.jpg"],
-    "sizes": ["XS", "S", "M", "L", "XL"],
-    "colors": ["Black", "Midnight Navy"],
+    "category": "gown",
+    "images": [
+      "/product_dress_1_1790064527682.jpg"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Black",
+      "Midnight Navy"
+    ],
     "stock": 12,
     "featured": true,
     "rating": 4.9,
     "reviewCount": 87,
-    "tags": ["gown", "evening", "bestseller", "noir"],
-    "createdAt": "2024-02-10T00:00:00.000Z"
+    "tags": [
+      "gown",
+      "evening",
+      "bestseller",
+      "noir"
+    ],
+    "createdAt": "2024-02-10T00:00:00.000Z",
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product_dress_1_1790064527682.jpg"
+        ],
+        "sizeStock": {
+          "XS": 2,
+          "S": 1,
+          "M": 1,
+          "L": 1,
+          "XL": 1
+        },
+        "stock": 6
+      },
+      {
+        "name": "Midnight Navy",
+        "hex": "#151E3D",
+        "images": [
+          "/product_dress_1_1790064527682.jpg"
+        ],
+        "sizeStock": {
+          "XS": 2,
+          "S": 1,
+          "M": 1,
+          "L": 1,
+          "XL": 1
+        },
+        "stock": 6
+      }
+    ],
+    "categoryId": "cat_1792577030464_ux91z",
+    "shortDescription": ""
   },
   {
     "id": "prd_002",
@@ -25,33 +75,170 @@
     "price": 3750000,
     "comparePrice": null,
     "category": "blazer",
-    "images": ["/product_blazer_1_1790064551000.jpg"],
-    "sizes": ["XS", "S", "M", "L", "XL", "XXL"],
-    "colors": ["Black", "Ivory", "Charcoal"],
+    "images": [
+      "/product_blazer_1_1790064551000.jpg"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "colors": [
+      "Black",
+      "Ecru",
+      "Stone",
+      "Navy"
+    ],
     "stock": 25,
     "featured": true,
     "rating": 4.8,
     "reviewCount": 134,
-    "tags": ["blazer", "formal", "office", "bestseller"],
-    "createdAt": "2024-01-20T00:00:00.000Z"
+    "tags": [
+      "blazer",
+      "formal",
+      "office",
+      "bestseller"
+    ],
+    "createdAt": "2024-01-20T00:00:00.000Z",
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "http://localhost:3002/uploads/product_1792408806028_3gzdo5c.jpg"
+        ],
+        "sizeStock": {
+          "XS": 2,
+          "S": 1,
+          "M": 1,
+          "L": 1,
+          "XL": 1,
+          "XXL": 1
+        },
+        "stock": 7
+      },
+      {
+        "name": "Ecru",
+        "hex": "#F2E6CD",
+        "images": [
+          "http://localhost:3002/uploads/product_1792408958882_npchhzd.png"
+        ],
+        "sizeStock": {
+          "XS": 1,
+          "S": 1,
+          "M": 1,
+          "L": 1,
+          "XL": 1,
+          "XXL": 1
+        },
+        "stock": 6
+      },
+      {
+        "name": "Stone",
+        "hex": "#B0A798",
+        "images": [
+          "http://localhost:3002/uploads/product_1792408973275_bw4ckp7.png"
+        ],
+        "sizeStock": {
+          "XS": 1,
+          "S": 1,
+          "M": 1,
+          "L": 1,
+          "XL": 1,
+          "XXL": 1
+        },
+        "stock": 6
+      },
+      {
+        "name": "Navy",
+        "hex": "#141F3E",
+        "images": [
+          "http://localhost:3002/uploads/product_1792408991189_50zxjm9.png"
+        ],
+        "sizeStock": {
+          "XS": 1,
+          "S": 1,
+          "M": 1,
+          "L": 1,
+          "XL": 1,
+          "XXL": 1
+        },
+        "stock": 6
+      }
+    ],
+    "shortDescription": "",
+    "categoryId": "cat_blazer"
   },
   {
     "id": "prd_003",
     "name": "Obsidian Chain Bag",
     "slug": "obsidian-chain-bag",
     "description": "A structured top-handle bag in full-grain calfskin leather with 24k gold-plated hardware. The signature chain strap offers versatile carry options. Lined in suede with three interior pockets.",
-    "price": 8900000,
+    "price": 9000000,
     "comparePrice": 10500000,
     "category": "bag",
-    "images": ["/product_bag_1_1790064566991.jpg"],
-    "sizes": ["One Size"],
-    "colors": ["Black", "Cognac", "Ivory"],
-    "stock": 8,
+    "images": [
+      "/product_bag_1_1790064566991.jpg"
+    ],
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Black",
+      "Cognac",
+      "Ivory"
+    ],
+    "stock": 12,
     "featured": true,
     "rating": 4.95,
     "reviewCount": 62,
-    "tags": ["bag", "leather", "luxury", "chain"],
-    "createdAt": "2024-03-05T00:00:00.000Z"
+    "tags": [
+      "bag",
+      "leather",
+      "luxury",
+      "chain"
+    ],
+    "createdAt": "2024-03-05T00:00:00.000Z",
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product_bag_1_1790064566991.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 4
+        },
+        "stock": 4
+      },
+      {
+        "name": "Cognac",
+        "hex": "#9E471A",
+        "images": [
+          "/product_bag_1_1790064566991.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 4
+        },
+        "stock": 4
+      },
+      {
+        "name": "Ivory",
+        "hex": "#FFFFF0",
+        "images": [
+          "/product_bag_1_1790064566991.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 4
+        },
+        "stock": 4
+      }
+    ],
+    "categoryId": "cat_bag",
+    "shortDescription": ""
   },
   {
     "id": "prd_004",
@@ -61,33 +248,191 @@
     "price": 5600000,
     "comparePrice": null,
     "category": "shoes",
-    "images": ["/product_shoes_1_1790064655581.jpg"],
-    "sizes": ["35", "36", "37", "38", "39", "40", "41"],
-    "colors": ["Black/Gold", "Ivory/Silver"],
+    "images": [
+      "/product_shoes_1_1790064655581.jpg"
+    ],
+    "sizes": [
+      "35",
+      "36",
+      "37",
+      "38",
+      "39",
+      "40",
+      "41"
+    ],
+    "colors": [
+      "Black/Gold",
+      "Ivory/Silver",
+      "Navy",
+      "White"
+    ],
     "stock": 15,
     "featured": true,
     "rating": 4.7,
     "reviewCount": 45,
-    "tags": ["heels", "stiletto", "shoes", "evening"],
-    "createdAt": "2024-04-12T00:00:00.000Z"
+    "tags": [
+      "heels",
+      "stiletto",
+      "shoes",
+      "evening"
+    ],
+    "createdAt": "2024-04-12T00:00:00.000Z",
+    "colorVariants": [
+      {
+        "name": "Black/Gold",
+        "hex": "#1A1A1A",
+        "images": [
+          "/product_shoes_1_1790064655581.jpg"
+        ],
+        "sizeStock": {
+          "35": 6,
+          "36": 0,
+          "37": 0,
+          "38": 0,
+          "39": 0,
+          "40": 0,
+          "41": 0
+        },
+        "stock": 6
+      },
+      {
+        "name": "Ivory/Silver",
+        "hex": "#F5F5F0",
+        "images": [
+          "http://localhost:3002/uploads/product_1792410054619_n9uvppp.jpg"
+        ],
+        "sizeStock": {
+          "35": 3,
+          "36": 0,
+          "37": 0,
+          "38": 0,
+          "39": 0,
+          "40": 0,
+          "41": 0
+        },
+        "stock": 3
+      },
+      {
+        "name": "Navy",
+        "hex": "#141F3E",
+        "images": [
+          "http://localhost:3002/uploads/product_1792410082855_sk9wolp.jpg"
+        ],
+        "sizeStock": {
+          "35": 3,
+          "36": 0,
+          "37": 0,
+          "38": 0,
+          "39": 0,
+          "40": 0,
+          "41": 0
+        },
+        "stock": 3
+      },
+      {
+        "name": "White",
+        "hex": "#ffffff",
+        "images": [
+          "http://localhost:3002/uploads/product_1792410103148_ayk8dbq.jpg"
+        ],
+        "sizeStock": {
+          "35": 3,
+          "36": 0,
+          "37": 0,
+          "38": 0,
+          "39": 0,
+          "40": 0,
+          "41": 0
+        },
+        "stock": 3
+      }
+    ],
+    "shortDescription": "",
+    "categoryId": "cat_shoes"
   },
   {
     "id": "prd_005",
-    "name": "Camel Oversized Coat",
-    "slug": "camel-oversized-coat",
+    "name": "Oversized Coat",
+    "slug": "oversized-coat",
     "description": "Crafted from 100% Australian merino wool in a rich camel tone. Double-breasted with a statement belt, this coat transcends seasons. The oversized silhouette drapes beautifully and pairs effortlessly with everything in your wardrobe.",
     "price": 7200000,
     "comparePrice": 9000000,
     "category": "coat",
-    "images": ["/product_coat_1_1790064693853.jpg"],
-    "sizes": ["XS", "S", "M", "L", "XL"],
-    "colors": ["Camel", "Black", "Ecru"],
+    "images": [
+      "http://localhost:3002/uploads/product_1792408165129_enwb8zj.jpg"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Camel",
+      "Black",
+      "Ecru"
+    ],
     "stock": 10,
-    "featured": false,
+    "featured": true,
     "rating": 4.85,
     "reviewCount": 93,
-    "tags": ["coat", "wool", "winter", "oversized"],
-    "createdAt": "2024-05-01T00:00:00.000Z"
+    "tags": [
+      "coat",
+      "wool",
+      "winter",
+      "oversized"
+    ],
+    "createdAt": "2024-05-01T00:00:00.000Z",
+    "colorVariants": [
+      {
+        "name": "Camel",
+        "hex": "#C19A6B",
+        "images": [
+          "/product_coat_1_1790064693853.jpg"
+        ],
+        "sizeStock": {
+          "XS": 4,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0
+        },
+        "stock": 4
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "http://localhost:3002/uploads/product_1792408165129_enwb8zj.jpg"
+        ],
+        "sizeStock": {
+          "XS": 3,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0
+        },
+        "stock": 3
+      },
+      {
+        "name": "Ecru",
+        "hex": "#C2B280",
+        "images": [
+          "http://localhost:3002/uploads/product_1792408175189_e2c58tj.jpg"
+        ],
+        "sizeStock": {
+          "XS": 3,
+          "S": 0,
+          "M": 0,
+          "L": 0,
+          "XL": 0
+        },
+        "stock": 3
+      }
+    ],
+    "shortDescription": "",
+    "categoryId": "cat_coat"
   },
   {
     "id": "prd_006",
@@ -97,33 +442,160 @@
     "price": 1850000,
     "comparePrice": null,
     "category": "accessories",
-    "images": ["/product_scarf_1_1790064780482.jpg"],
-    "sizes": ["One Size"],
-    "colors": ["Gold/Navy", "Ivory/Gold", "Black/Gold"],
+    "images": [
+      "/product_scarf_1_1790064780482.jpg"
+    ],
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Navy/Gold",
+      "Ivory/Gold",
+      "Black/Gold"
+    ],
     "stock": 30,
     "featured": false,
     "rating": 4.6,
     "reviewCount": 28,
-    "tags": ["scarf", "silk", "accessories", "gift"],
-    "createdAt": "2024-06-15T00:00:00.000Z"
+    "tags": [
+      "scarf",
+      "silk",
+      "accessories",
+      "gift"
+    ],
+    "createdAt": "2024-06-15T00:00:00.000Z",
+    "colorVariants": [
+      {
+        "name": "Navy/Gold",
+        "hex": "#1F2A44",
+        "images": [
+          "http://localhost:3002/uploads/product_1792406883825_2qtb2kz.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 10
+        },
+        "stock": 10
+      },
+      {
+        "name": "Ivory/Gold",
+        "hex": "#FFFFF0",
+        "images": [
+          "/product_scarf_1_1790064780482.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 10
+        },
+        "stock": 10
+      },
+      {
+        "name": "Black/Gold",
+        "hex": "#1A1A1A",
+        "images": [
+          "http://localhost:3002/uploads/product_1792406899240_8jeycyq.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 10
+        },
+        "stock": 10
+      }
+    ],
+    "shortDescription": "",
+    "categoryId": "cat_accessories"
   },
   {
     "id": "prd_007",
-    "name": "Velvet Midi Dress",
+    "name": "Exclusive Handcrafted Italian Velvet Cocktail Evening Gown with Draped Cowl Neckline",
     "slug": "velvet-midi-dress",
     "description": "A plush silk-velvet midi dress with a draped cowl neck and fluid A-line silhouette. The bias cut skims the body beautifully. Fully lined in charmeuse. Available in three deep jewel tones for the season.",
     "price": 3200000,
     "comparePrice": 4100000,
     "category": "dress",
-    "images": ["/product_dress_1_1790064527682.jpg"],
-    "sizes": ["XS", "S", "M", "L"],
-    "colors": ["Deep Burgundy", "Sapphire", "Emerald"],
+    "images": [
+      "http://localhost:3002/uploads/product_1792409373857_fzqidit.jpg"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "colors": [
+      "Deep Burgundy",
+      "Sapphire",
+      "Emerald",
+      "Black"
+    ],
     "stock": 18,
-    "featured": false,
+    "featured": true,
     "rating": 4.75,
     "reviewCount": 51,
-    "tags": ["velvet", "midi", "dress", "evening"],
-    "createdAt": "2024-07-20T00:00:00.000Z"
+    "tags": [
+      "velvet",
+      "midi",
+      "dress",
+      "evening"
+    ],
+    "createdAt": "2024-07-20T00:00:00.000Z",
+    "colorVariants": [
+      {
+        "name": "Deep Burgundy",
+        "hex": "#800020",
+        "images": [
+          "http://localhost:3002/uploads/product_1792407764433_2jf22r4.jpg"
+        ],
+        "sizeStock": {
+          "XS": 3,
+          "S": 1,
+          "M": 1,
+          "L": 1
+        },
+        "stock": 6
+      },
+      {
+        "name": "Sapphire",
+        "hex": "#0F52BA",
+        "images": [
+          "http://localhost:3002/uploads/product_1792407775247_z8dusss.jpg"
+        ],
+        "sizeStock": {
+          "XS": 1,
+          "S": 1,
+          "M": 1,
+          "L": 1
+        },
+        "stock": 4
+      },
+      {
+        "name": "Emerald",
+        "hex": "#50C878",
+        "images": [
+          "http://localhost:3002/uploads/product_1792407785028_lpl9rh9.jpg"
+        ],
+        "sizeStock": {
+          "XS": 1,
+          "S": 1,
+          "M": 1,
+          "L": 1
+        },
+        "stock": 4
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "http://localhost:3002/uploads/product_1792409373857_fzqidit.jpg"
+        ],
+        "sizeStock": {
+          "XS": 1,
+          "S": 1,
+          "M": 1,
+          "L": 1
+        },
+        "stock": 4
+      }
+    ],
+    "shortDescription": "",
+    "categoryId": "cat_dress"
   },
   {
     "id": "prd_008",
@@ -133,50 +605,240 @@
     "price": 1200000,
     "comparePrice": null,
     "category": "accessories",
-    "images": ["/product_bag_1_1790064566991.jpg"],
-    "sizes": ["XS/S", "M/L", "XL/XXL"],
-    "colors": ["Black/Gold", "Tan/Gold", "White/Silver"],
+    "images": [
+      "http://localhost:3002/uploads/product_1792402751616_6fslbi4.jpg"
+    ],
+    "sizes": [
+      "XS/S",
+      "M/L",
+      "XL/XXL"
+    ],
+    "colors": [
+      "Black/Gold",
+      "Tan/Gold",
+      "White/Silver"
+    ],
     "stock": 40,
-    "featured": false,
+    "featured": true,
     "rating": 4.5,
     "reviewCount": 19,
-    "tags": ["belt", "leather", "accessories", "logo"],
-    "createdAt": "2024-08-01T00:00:00.000Z"
+    "tags": [
+      "belt",
+      "leather",
+      "accessories",
+      "logo"
+    ],
+    "createdAt": "2024-08-01T00:00:00.000Z",
+    "colorVariants": [
+      {
+        "name": "Black/Gold",
+        "hex": "#1A1A1A",
+        "images": [
+          "http://localhost:3002/uploads/product_1792402751616_6fslbi4.jpg"
+        ],
+        "sizeStock": {
+          "XS/S": 6,
+          "M/L": 4,
+          "XL/XXL": 4
+        },
+        "stock": 14
+      },
+      {
+        "name": "Tan/Gold",
+        "hex": "#D2B48C",
+        "images": [
+          "http://localhost:3002/uploads/product_1792410783205_xfmy9wa.png"
+        ],
+        "sizeStock": {
+          "XS/S": 5,
+          "M/L": 4,
+          "XL/XXL": 4
+        },
+        "stock": 13
+      },
+      {
+        "name": "White/Silver",
+        "hex": "#FFFFFF",
+        "images": [
+          "http://localhost:3002/uploads/product_1792410789976_sn7a7zc.png"
+        ],
+        "sizeStock": {
+          "XS/S": 5,
+          "M/L": 4,
+          "XL/XXL": 4
+        },
+        "stock": 13
+      }
+    ],
+    "shortDescription": "",
+    "categoryId": "cat_accessories"
   },
   {
     "id": "prd_009",
-    "name": "Structured Leather Tote",
-    "slug": "structured-leather-tote",
+    "name": "Structured Leather Tote Bag",
+    "slug": "structured-leather-tote-bag",
     "description": "Our everyday icon. A spacious, structured tote in textured calfskin with a magnetic-snap closure and zip inner pocket. The twin carry handles and removable crossbody strap make it the most versatile bag in your collection.",
     "price": 6500000,
     "comparePrice": 7800000,
     "category": "bag",
-    "images": ["/product_bag_1_1790064566991.jpg"],
-    "sizes": ["One Size"],
-    "colors": ["Black", "Taupe", "Navy"],
+    "images": [
+      "/product_bag_1_1790064566991.jpg"
+    ],
+    "sizes": [
+      "One Size"
+    ],
+    "colors": [
+      "Black",
+      "Taupe",
+      "Navy"
+    ],
     "stock": 6,
     "featured": false,
     "rating": 4.8,
     "reviewCount": 74,
-    "tags": ["tote", "leather", "everyday", "bag"],
-    "createdAt": "2024-08-15T00:00:00.000Z"
+    "tags": [
+      "tote",
+      "leather",
+      "everyday",
+      "bag"
+    ],
+    "createdAt": "2024-08-15T00:00:00.000Z",
+    "colorVariants": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "/product_bag_1_1790064566991.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 2
+        },
+        "stock": 2
+      },
+      {
+        "name": "Taupe",
+        "hex": "#87796F",
+        "images": [
+          "http://localhost:3002/uploads/product_1792401632187_9t6nh9e.png"
+        ],
+        "sizeStock": {
+          "One Size": 2
+        },
+        "stock": 2
+      },
+      {
+        "name": "Navy",
+        "hex": "#1F2A44",
+        "images": [
+          "http://localhost:3002/uploads/product_1792401639668_394ox3g.png"
+        ],
+        "sizeStock": {
+          "One Size": 2
+        },
+        "stock": 2
+      }
+    ],
+    "shortDescription": "",
+    "categoryId": "cat_bag"
   },
   {
     "id": "prd_010",
     "name": "Linen Tailored Trousers",
     "slug": "linen-tailored-trousers",
     "description": "High-waisted trousers in a refined European linen blend. The straight-leg, wide cut creates a long, lean line. Complete with a single pleat, side pockets and a concealed zip and hook closure. An enduring wardrobe foundation.",
-    "price": 2100000,
+    "price": 2200000,
     "comparePrice": null,
-    "category": "blazer",
-    "images": ["/product_blazer_1_1790064551000.jpg"],
-    "sizes": ["XS", "S", "M", "L", "XL"],
-    "colors": ["Ecru", "Stone", "Black", "Navy"],
-    "stock": 22,
-    "featured": false,
+    "category": "trousers",
+    "images": [
+      "http://localhost:3002/uploads/product_1792408715042_zqxlqtw.jpg"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "colors": [
+      "Ecru",
+      "Stone",
+      "Black",
+      "Navy"
+    ],
+    "stock": 1539,
+    "featured": true,
     "rating": 4.65,
     "reviewCount": 38,
-    "tags": ["trousers", "linen", "tailored", "office"],
-    "createdAt": "2024-09-01T00:00:00.000Z"
+    "tags": [
+      "trousers",
+      "linen",
+      "tailored",
+      "office"
+    ],
+    "createdAt": "2024-09-01T00:00:00.000Z",
+    "colorVariants": [
+      {
+        "name": "Ecru",
+        "hex": "#C2B280",
+        "images": [
+          "http://localhost:3002/uploads/product_1792408697272_hk7zfa6.jpg"
+        ],
+        "sizeStock": {
+          "XS": 545,
+          "S": 34,
+          "M": 234,
+          "L": 23,
+          "XL": 23
+        },
+        "stock": 859
+      },
+      {
+        "name": "Stone",
+        "hex": "#928E85",
+        "images": [
+          "http://localhost:3002/uploads/product_1792408706440_hwec0ku.jpg"
+        ],
+        "sizeStock": {
+          "XS": 89,
+          "S": 65,
+          "M": 76,
+          "L": 53,
+          "XL": 67
+        },
+        "stock": 350
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "http://localhost:3002/uploads/product_1792408715042_zqxlqtw.jpg"
+        ],
+        "sizeStock": {
+          "XS": 98,
+          "S": 6,
+          "M": 4,
+          "L": 34,
+          "XL": 46
+        },
+        "stock": 188
+      },
+      {
+        "name": "Navy",
+        "hex": "#1F2A44",
+        "images": [
+          "http://localhost:3002/uploads/product_1792408721953_047qv23.jpg"
+        ],
+        "sizeStock": {
+          "XS": 9,
+          "S": 8,
+          "M": 68,
+          "L": 54,
+          "XL": 3
+        },
+        "stock": 142
+      }
+    ],
+    "shortDescription": "",
+    "categoryId": "cat_trousers"
   }
 ]

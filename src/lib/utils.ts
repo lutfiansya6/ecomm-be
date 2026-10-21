@@ -74,3 +74,34 @@ export function getStars(rating: number): ('full' | 'half' | 'empty')[] {
   }
   return stars;
 }
+
+/** Generate URL-friendly category slug (lowercase, numbers, and hyphens only) */
+export function generateCategorySlug(name: string): string {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/** Validate category slug format (only lowercase letters, numbers, and single hyphens) */
+export function isValidCategorySlug(slug: string): boolean {
+  return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug);
+}
+
+/** Generate a unique slug by appending counter if needed */
+export function getUniqueCategorySlug(name: string, existingSlugs: string[]): string {
+  const base = generateCategorySlug(name) || 'category';
+  let slug = base;
+  let counter = 1;
+  const set = new Set(existingSlugs.map((s) => s.toLowerCase()));
+  while (set.has(slug)) {
+    slug = `${base}-${counter}`;
+    counter++;
+  }
+  return slug;
+}
+
+export * from './colors';
+
+
