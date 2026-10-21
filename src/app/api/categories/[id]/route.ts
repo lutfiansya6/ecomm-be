@@ -87,6 +87,22 @@ export async function PUT(
     updates.order = body.order;
   }
 
+  if (body.label_en !== undefined) {
+    if (typeof body.label_en !== 'string') {
+      return errorResponse('label_en harus berupa teks', 400);
+    }
+    const val = body.label_en.trim();
+    updates.label_en = val || updates.name || existing.name;
+  }
+
+  if (body.label_id !== undefined) {
+    if (typeof body.label_id !== 'string') {
+      return errorResponse('label_id harus berupa teks', 400);
+    }
+    const val = body.label_id.trim();
+    updates.label_id = val || updates.name || existing.name;
+  }
+
   const updated = db.categories.update(existing.id, updates);
   if (!updated) {
     return errorResponse('Gagal memperbarui kategori', 500);
@@ -102,7 +118,11 @@ export async function PUT(
     });
   }
 
-  return successResponse(updated);
+  return successResponse({
+    ...updated,
+    label_en: updated.label_en || updated.name,
+    label_id: updated.label_id || updated.name,
+  });
 }
 
 export async function DELETE(

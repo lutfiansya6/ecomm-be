@@ -5,6 +5,8 @@
     "slug": "dress",
     "order": 1,
     "active": true,
+    "label_en": "Dress",
+    "label_id": "Gaun",
     "createdAt": "2026-01-01T00:00:00.000Z"
   },
   {
@@ -13,6 +15,8 @@
     "slug": "blazer",
     "order": 2,
     "active": true,
+    "label_en": "Blazer",
+    "label_id": "Blazer",
     "createdAt": "2026-01-01T00:00:00.000Z"
   },
   {
@@ -21,6 +25,8 @@
     "slug": "pants",
     "order": 3,
     "active": true,
+    "label_en": "Pants",
+    "label_id": "Celana",
     "createdAt": "2026-01-01T00:00:00.000Z"
   },
   {
@@ -29,6 +35,8 @@
     "slug": "bag",
     "order": 4,
     "active": true,
+    "label_en": "Bag",
+    "label_id": "Tas",
     "createdAt": "2026-01-01T00:00:00.000Z"
   },
   {
@@ -37,6 +45,8 @@
     "slug": "shoes",
     "order": 5,
     "active": true,
+    "label_en": "Shoes",
+    "label_id": "Sepatu",
     "createdAt": "2026-01-01T00:00:00.000Z"
   },
   {
@@ -45,6 +55,8 @@
     "slug": "coat",
     "order": 6,
     "active": true,
+    "label_en": "Coat",
+    "label_id": "Mantel",
     "createdAt": "2026-01-01T00:00:00.000Z"
   },
   {
@@ -53,6 +65,8 @@
     "slug": "accessories",
     "order": 7,
     "active": true,
+    "label_en": "Accessories",
+    "label_id": "Aksesoris",
     "createdAt": "2026-01-01T00:00:00.000Z"
   },
   {
@@ -61,6 +75,8 @@
     "slug": "gown",
     "order": 8,
     "active": true,
+    "label_en": "Gown",
+    "label_id": "Gaun Malam",
     "createdAt": "2026-10-21T10:03:50.464Z"
   }
 ]

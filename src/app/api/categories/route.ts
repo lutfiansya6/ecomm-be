@@ -28,6 +28,8 @@ export async function GET(request: Request) {
 
   const data = categories.map((cat) => ({
     ...cat,
+    label_en: cat.label_en || cat.name,
+    label_id: cat.label_id || cat.name,
     productCount: allProducts.filter(
       (p) => p.categoryId === cat.id || p.category === cat.slug
     ).length,
@@ -91,12 +93,23 @@ export async function POST(request: Request) {
     order = all.length > 0 ? Math.max(...all.map((c) => c.order)) + 1 : 1;
   }
 
+  const label_en =
+    typeof body.label_en === 'string' && body.label_en.trim()
+      ? body.label_en.trim()
+      : name;
+  const label_id =
+    typeof body.label_id === 'string' && body.label_id.trim()
+      ? body.label_id.trim()
+      : name;
+
   const newCategory: Category = {
     id: generateId('cat'),
     name,
     slug,
     order,
     active,
+    label_en,
+    label_id,
     createdAt: new Date().toISOString(),
   };
 
