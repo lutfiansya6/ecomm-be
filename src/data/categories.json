@@ -1,0 +1,66 @@
+[
+  {
+    "id": "cat_dress",
+    "name": "Dress",
+    "slug": "dress",
+    "order": 1,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "cat_blazer",
+    "name": "Blazer",
+    "slug": "blazer",
+    "order": 2,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "cat_trousers",
+    "name": "Pants",
+    "slug": "pants",
+    "order": 3,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "cat_bag",
+    "name": "Bag",
+    "slug": "bag",
+    "order": 4,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "cat_shoes",
+    "name": "Shoes",
+    "slug": "shoes",
+    "order": 5,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "cat_coat",
+    "name": "Coat",
+    "slug": "coat",
+    "order": 6,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "cat_accessories",
+    "name": "Accessories",
+    "slug": "accessories",
+    "order": 7,
+    "active": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "cat_1792577030464_ux91z",
+    "name": "Gown",
+    "slug": "gown",
+    "order": 8,
+    "active": true,
+    "createdAt": "2026-10-21T10:03:50.464Z"
+  }
+]
