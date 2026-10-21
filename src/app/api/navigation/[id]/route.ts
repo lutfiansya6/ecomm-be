@@ -108,12 +108,74 @@ export async function PUT(
     updates.childCategoryIds = body.childCategoryIds.map((cid) => String(cid).trim()).filter(Boolean);
   }
 
+  if (body.label_en !== undefined) {
+    if (typeof body.label_en !== 'string') {
+      return errorResponse('label_en harus berupa teks', 400);
+    }
+    const val = body.label_en.trim();
+    updates.label_en = val || updates.label || existing.label;
+  }
+
+  if (body.label_id !== undefined) {
+    if (typeof body.label_id !== 'string') {
+      return errorResponse('label_id harus berupa teks', 400);
+    }
+    const val = body.label_id.trim();
+    updates.label_id = val || updates.label || existing.label;
+  }
+
+  if (body.gender !== undefined) {
+    const rawGender = typeof body.gender === 'string' ? body.gender.trim().toLowerCase() : '';
+    const validGenders = ['women', 'men', 'unisex'];
+    if (rawGender && !validGenders.includes(rawGender)) {
+      return errorResponse('gender harus salah satu dari: women, men, unisex', 400);
+    }
+    updates.gender = (rawGender as 'women' | 'men' | 'unisex') || undefined;
+  }
+
+  if (body.slug !== undefined) {
+    if (typeof body.slug !== 'string' || !body.slug.trim()) {
+      return errorResponse('slug harus berupa teks', 400);
+    }
+    const slug = body.slug.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const dup = db.navigation.findAll().find((item) => item.id !== existing.id && item.slug.toLowerCase() === slug);
+    if (dup) {
+      return errorResponse('Slug menu navigasi sudah digunakan', 400);
+    }
+    updates.slug = slug;
+  }
+
+  if (body.productIds !== undefined) {
+    if (!Array.isArray(body.productIds)) {
+      return errorResponse('productIds harus berupa array string', 400);
+    }
+    const rawIds = body.productIds.map(String).map((s) => s.trim()).filter(Boolean);
+    const uniqueIds = Array.from(new Set(rawIds));
+    const allProducts = db.products.findAll();
+    const productMap = new Map(allProducts.map((p) => [p.id, p]));
+    for (const pid of uniqueIds) {
+      if (!productMap.has(pid)) {
+        return errorResponse(`Produk dengan ID "${pid}" tidak ditemukan`, 400);
+      }
+    }
+    updates.productIds = uniqueIds;
+  }
+
   const updated = db.navigation.update(existing.id, updates);
   if (!updated) {
     return errorResponse('Gagal memperbarui item navigasi', 500);
   }
 
-  return successResponse(updated);
+  const allProducts = db.products.findAll();
+  const validProductIds = new Set(allProducts.map((p) => p.id));
+  const productCount = (updated.productIds || []).filter((pid) => validProductIds.has(pid)).length;
+
+  return successResponse({
+    ...updated,
+    productCount,
+    label_en: updated.label_en || updated.label,
+    label_id: updated.label_id || updated.label,
+  });
 }
 
 export async function DELETE(

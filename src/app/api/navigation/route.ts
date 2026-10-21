@@ -12,15 +12,32 @@ export async function GET(request: Request) {
   const isPublic = searchParams.get('public') === '1' || searchParams.get('public') === 'true';
 
   const items = db.navigation.findAll({ activeOnly: isPublic });
+  const allProducts = db.products.findAll();
+  const validProductIds = new Set(allProducts.map((p) => p.id));
+
+  const mappedItems = items.map((item) => {
+    const slug = item.slug || item.label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const productCount = (item.productIds || []).filter((id) => validProductIds.has(id)).length;
+    return {
+      ...item,
+      slug,
+      productCount,
+      target: isPublic ? `/products?menu=${slug}` : (item.target || `/products?menu=${slug}`),
+      label_en: item.label_en || item.label,
+      label_id: item.label_id || item.label,
+    };
+  });
 
   if (!isPublic) {
-    return successResponse(items);
+    return successResponse(mappedItems);
   }
 
   // Resolve childCategoryIds for public query
-  const resolvedItems = items.map((item) => {
-    if (!item.childCategoryIds || !Array.isArray(item.childCategoryIds)) {
-      return item;
+  const resolvedItems = mappedItems.map((item) => {
+    if (!item.childCategoryIds || !Array.isArray(item.childCategoryIds) || item.childCategoryIds.length === 0) {
+      const copy = { ...item };
+      delete copy.children;
+      return copy;
     }
 
     const resolvedChildren = item.childCategoryIds
@@ -28,15 +45,23 @@ export async function GET(request: Request) {
         const cat = db.categories.findById(catId);
         if (!cat || !cat.active) return null;
         return {
+          id: cat.id,
           name: cat.name,
           slug: cat.slug,
+          label_en: cat.label_en || cat.name,
+          label_id: cat.label_id || cat.name,
         };
       })
-      .filter(Boolean) as { name: string; slug: string }[];
+      .filter(Boolean) as { id?: string; name: string; slug: string; label_en: string; label_id: string }[];
+
+    if (resolvedChildren.length === 0) {
+      const copy = { ...item };
+      delete copy.children;
+      return copy;
+    }
 
     return {
       ...item,
-      childCategoryIds: resolvedChildren,
       children: resolvedChildren,
     };
   });
@@ -78,18 +103,43 @@ export async function POST(request: Request) {
   }
   const type = body.type as NavigationItemType;
 
+  let slug =
+    typeof body.slug === 'string' && body.slug.trim()
+      ? body.slug.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+      : label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+  if (!slug) {
+    slug = `menu-${Date.now()}`;
+  }
+
+  const existingSlug = db.navigation.findBySlug(slug);
+  if (existingSlug) {
+    return errorResponse('Slug menu navigasi sudah digunakan', 400);
+  }
+
+  let productIds: string[] = [];
+  if (Array.isArray(body.productIds)) {
+    const rawIds = body.productIds.map(String).map((s) => s.trim()).filter(Boolean);
+    const uniqueIds = Array.from(new Set(rawIds));
+    const allProducts = db.products.findAll();
+    const productMap = new Map(allProducts.map((p) => [p.id, p]));
+    for (const pid of uniqueIds) {
+      if (!productMap.has(pid)) {
+        return errorResponse(`Produk dengan ID "${pid}" tidak ditemukan`, 400);
+      }
+    }
+    productIds = uniqueIds;
+  }
+
   let target = '';
   if (type === 'category' || type === 'url') {
-    if (!body.target || typeof body.target !== 'string' || !body.target.trim()) {
-      return errorResponse('Target wajib diisi untuk tipe category dan url', 400);
+    if (typeof body.target === 'string' && body.target.trim()) {
+      target = body.target.trim();
+    } else {
+      target = `/products?menu=${slug}`;
     }
-    target = body.target.trim();
-  } else if (type === 'all') {
-    target = typeof body.target === 'string' && body.target.trim() ? body.target.trim() : '/products';
-  } else if (type === 'new') {
-    target = typeof body.target === 'string' && body.target.trim() ? body.target.trim() : '/products?sort=newest';
-  } else if (type === 'sale') {
-    target = typeof body.target === 'string' && body.target.trim() ? body.target.trim() : '/products?sale=1';
+  } else {
+    target = `/products?menu=${slug}`;
   }
 
   const accent = typeof body.accent === 'boolean' ? body.accent : type === 'sale';
@@ -109,19 +159,40 @@ export async function POST(request: Request) {
     order = all.length > 0 ? Math.max(...all.map((i) => i.order)) + 1 : 1;
   }
 
+  const label_en =
+    typeof body.label_en === 'string' && body.label_en.trim()
+      ? body.label_en.trim()
+      : label;
+  const label_id =
+    typeof body.label_id === 'string' && body.label_id.trim()
+      ? body.label_id.trim()
+      : label;
+
+  const rawGender = typeof body.gender === 'string' ? body.gender.trim().toLowerCase() : '';
+  const validGenders = ['women', 'men', 'unisex'];
+  const gender = validGenders.includes(rawGender) ? (rawGender as 'women' | 'men' | 'unisex') : undefined;
+
   const newItem: NavigationItem = {
     id: generateId('nav'),
     label,
+    slug,
     type,
     target,
     accent,
     order,
     active,
     system,
+    productIds,
+    gender,
     childCategoryIds,
+    label_en,
+    label_id,
     createdAt: new Date().toISOString(),
   };
 
   const created = db.navigation.create(newItem);
-  return successResponse(created, 201);
+  return successResponse({
+    ...created,
+    productCount: productIds.length,
+  }, 201);
 }

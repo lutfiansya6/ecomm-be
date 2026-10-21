@@ -31,6 +31,8 @@ export interface Category {
   slug: string;
   order: number;
   active: boolean;
+  label_en?: string;
+  label_id?: string;
   createdAt: string;
   productCount?: number;
 }
@@ -41,21 +43,31 @@ export interface NavigationChildCategory {
   id?: string;
   name: string;
   slug: string;
+  label_en?: string;
+  label_id?: string;
 }
 
 export interface NavigationItem {
   id: string;
   label: string;
+  slug: string;
   type: NavigationItemType;
   target: string;
   accent: boolean;
   order: number;
   active: boolean;
   system: boolean;
+  productIds: string[];
+  productCount?: number;
+  gender?: 'women' | 'men' | 'unisex';
   childCategoryIds?: string[];
   children?: NavigationChildCategory[];
+  label_en?: string;
+  label_id?: string;
   createdAt: string;
 }
+
+export type ProductGender = 'women' | 'men' | 'unisex';
 
 export interface Product {
   id: string;
@@ -67,6 +79,8 @@ export interface Product {
   comparePrice?: number;
   categoryId: string;
   category: string;
+  gender: ProductGender;
+  collection: boolean;
   images: string[];
   sizes: string[];
   colors: string[];

@@ -1,7 +1,7 @@
 // ============================================================
 // LUXE — Data store with JSON file persistence
 // ============================================================
-import type { User, Product, ColorVariant, Order, Cart, UserAddress, Review, Category, NavigationItem } from '@/types';
+import type { User, Product, ColorVariant, Order, Cart, UserAddress, Review, Category, NavigationItem, ProductGender } from '@/types';
 import fs from 'fs';
 import path from 'path';
 
@@ -126,6 +126,8 @@ function ensureProductColorVariants(items: Product[]): Product[] {
     return {
       ...p,
       categoryId: p.categoryId || (p.category ? `cat_${p.category}` : ''),
+      gender: (p.gender as ProductGender) || 'unisex',
+      collection: typeof p.collection === 'boolean' ? p.collection : Boolean(p.featured),
       sizes,
       colorVariants: variants,
       stock: derivedProductStock,
@@ -133,11 +135,21 @@ function ensureProductColorVariants(items: Product[]): Product[] {
   });
 }
 
+function ensureNavigationItems(items: NavigationItem[]): NavigationItem[] {
+  return items.map((item) => ({
+    ...item,
+    slug: item.slug || item.label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+    productIds: Array.isArray(item.productIds) ? item.productIds : [],
+  }));
+}
+
 
 // Stores initialized from disk (falling back to imported JSON)
 let users: User[] = loadDataFromFile<User[]>('users.json', usersData as User[]);
 let categories: Category[] = loadDataFromFile<Category[]>('categories.json', categoriesData as Category[]);
-let navigation: NavigationItem[] = loadDataFromFile<NavigationItem[]>('navigation.json', navigationData as NavigationItem[]);
+let navigation: NavigationItem[] = ensureNavigationItems(
+  loadDataFromFile<NavigationItem[]>('navigation.json', navigationData as NavigationItem[])
+);
 let products: Product[] = ensureProductColorVariants(
   loadDataFromFile<Product[]>('products.json', productsData as Product[])
 );
@@ -278,7 +290,16 @@ export const db = {
 
   // ——— Products ———————————————————————————————————————————————
   products: {
-    findAll: (filters?: { category?: string; featured?: boolean; search?: string; sale?: boolean }) => {
+    findAll: (filters?: {
+      category?: string;
+      featured?: boolean;
+      search?: string;
+      sale?: boolean;
+      gender?: string;
+      collection?: boolean;
+      section?: string;
+      menu?: string;
+    }) => {
       try {
         const filePath = getDataFilePath('products.json');
         if (fs.existsSync(filePath)) {
@@ -292,6 +313,29 @@ export const db = {
         // Fall back to in-memory products
       }
       let result = [...products];
+
+      if (filters?.menu) {
+        const m = filters.menu.trim().toLowerCase();
+        const allNav = db.navigation.findAll();
+        const nav = allNav.find(
+          (item) =>
+            item.id.toLowerCase() === m ||
+            item.slug.toLowerCase() === m ||
+            (m === 'all' && item.id === 'nav_all') ||
+            (m === 'new' && item.id === 'nav_new')
+        );
+        if (!nav) {
+          return [];
+        }
+        const productMap = new Map(result.map((p) => [p.id, p]));
+        const orderedProducts: Product[] = [];
+        for (const pid of nav.productIds || []) {
+          const p = productMap.get(pid);
+          if (p) orderedProducts.push(p);
+        }
+        result = orderedProducts;
+      }
+
       if (filters?.category) {
         const cat = db.categories.findBySlug(filters.category) || db.categories.findById(filters.category);
         const catId = cat ? cat.id : filters.category;
@@ -304,6 +348,31 @@ export const db = {
           result = result.filter((p) => Boolean(p.comparePrice && p.comparePrice > p.price));
         } else {
           result = result.filter((p) => !p.comparePrice || p.comparePrice <= p.price);
+        }
+      }
+      if (filters?.gender) {
+        const g = filters.gender.toLowerCase();
+        if (g === 'women') {
+          result = result.filter((p) => p.gender === 'women' || p.gender === 'unisex');
+        } else if (g === 'men') {
+          result = result.filter((p) => p.gender === 'men' || p.gender === 'unisex');
+        } else {
+          result = result.filter((p) => p.gender === g);
+        }
+      }
+      if (filters?.collection !== undefined) {
+        result = result.filter((p) => p.collection === filters.collection);
+      }
+      if (filters?.section) {
+        const sec = filters.section.toLowerCase();
+        if (sec === 'women') {
+          result = result.filter((p) => p.gender === 'women' || p.gender === 'unisex');
+        } else if (sec === 'men') {
+          result = result.filter((p) => p.gender === 'men' || p.gender === 'unisex');
+        } else if (sec === 'collections') {
+          result = result.filter((p) => p.collection === true);
+        } else if (sec === 'sale') {
+          result = result.filter((p) => Boolean(p.comparePrice && p.comparePrice > p.price));
         }
       }
       if (filters?.search) {
@@ -328,6 +397,8 @@ export const db = {
         : product.stock;
       const finalProduct: Product = {
         ...product,
+        gender: product.gender || 'unisex',
+        collection: typeof product.collection === 'boolean' ? product.collection : false,
         colorVariants: variants,
         stock: derivedStock,
       };
@@ -358,6 +429,7 @@ export const db = {
       if (idx === -1) return false;
       products.splice(idx, 1);
       saveDataToFile('products.json', products);
+      db.navigation.removeProductIdFromAll(id);
       return true;
     },
     /**
@@ -695,7 +767,7 @@ export const db = {
           const fileContent = fs.readFileSync(filePath, 'utf-8');
           const parsed = JSON.parse(fileContent);
           if (Array.isArray(parsed) && parsed.length > 0) {
-            navigation = parsed;
+            navigation = ensureNavigationItems(parsed);
           }
         }
       } catch {
@@ -709,6 +781,12 @@ export const db = {
       return result;
     },
     findById: (id: string) => db.navigation.findAll().find((item) => item.id === id) || null,
+    findBySlug: (slug: string) => {
+      const s = slug.toLowerCase();
+      return (
+        db.navigation.findAll().find((item) => item.slug.toLowerCase() === s || item.id.toLowerCase() === s) || null
+      );
+    },
     findByLabel: (label: string) =>
       db.navigation.findAll().find((item) => item.label.toLowerCase() === label.toLowerCase()) || null,
     create: (item: NavigationItem) => {
@@ -746,6 +824,43 @@ export const db = {
       });
       navigation.sort((a, b) => a.order - b.order);
       saveDataToFile('navigation.json', navigation);
+      return navigation;
+    },
+    removeProductIdFromAll: (productId: string) => {
+      db.navigation.findAll();
+      let changed = false;
+      navigation.forEach((item) => {
+        if (item.productIds && item.productIds.includes(productId)) {
+          item.productIds = item.productIds.filter((id) => id !== productId);
+          changed = true;
+        }
+      });
+      if (changed) {
+        saveDataToFile('navigation.json', navigation);
+      }
+    },
+    setProductMenus: (productId: string, menuIds: string[]) => {
+      db.navigation.findAll();
+      const targetMenuSet = new Set(menuIds);
+      let changed = false;
+      navigation.forEach((item) => {
+        item.productIds = item.productIds || [];
+        const isPresent = item.productIds.includes(productId);
+        if (targetMenuSet.has(item.id)) {
+          if (!isPresent) {
+            item.productIds.push(productId);
+            changed = true;
+          }
+        } else {
+          if (isPresent) {
+            item.productIds = item.productIds.filter((id) => id !== productId);
+            changed = true;
+          }
+        }
+      });
+      if (changed) {
+        saveDataToFile('navigation.json', navigation);
+      }
       return navigation;
     },
   },
