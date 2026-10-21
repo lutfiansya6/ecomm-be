@@ -1,0 +1,85 @@
+[
+  {
+    "id": "nav_all",
+    "label": "All Products",
+    "type": "all",
+    "target": "/products",
+    "accent": false,
+    "order": 1,
+    "active": true,
+    "system": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "nav_new",
+    "label": "New Arrivals",
+    "type": "new",
+    "target": "/products?sort=newest",
+    "accent": false,
+    "order": 2,
+    "active": true,
+    "system": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "nav_women",
+    "label": "Women",
+    "type": "category",
+    "target": "women",
+    "accent": false,
+    "order": 3,
+    "active": true,
+    "system": false,
+    "childCategoryIds": [
+      "cat_dress",
+      "cat_blazer",
+      "cat_trousers",
+      "cat_bag",
+      "cat_shoes",
+      "cat_coat",
+      "cat_accessories"
+    ],
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "nav_men",
+    "label": "Men",
+    "type": "category",
+    "target": "men",
+    "accent": false,
+    "order": 4,
+    "active": true,
+    "system": false,
+    "childCategoryIds": [
+      "cat_blazer",
+      "cat_trousers",
+      "cat_coat",
+      "cat_accessories",
+      "cat_shoes",
+      "cat_bag"
+    ],
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "nav_collections",
+    "label": "Collections",
+    "type": "url",
+    "target": "/collections",
+    "accent": false,
+    "order": 5,
+    "active": true,
+    "system": false,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "nav_sale",
+    "label": "Sale",
+    "type": "sale",
+    "target": "/products?sale=1",
+    "accent": true,
+    "order": 6,
+    "active": true,
+    "system": true,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  }
+]
