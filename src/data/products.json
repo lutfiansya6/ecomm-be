@@ -8,7 +8,7 @@
     "comparePrice": 6200000,
     "category": "gown",
     "images": [
-      "/product_dress_1_1790064527682.jpg"
+      "/gown_black.jpg"
     ],
     "sizes": [
       "XS",
@@ -19,9 +19,11 @@
     ],
     "colors": [
       "Black",
-      "Midnight Navy"
+      "Midnight Navy",
+      "Ecru",
+      "White"
     ],
-    "stock": 12,
+    "stock": 171,
     "featured": true,
     "rating": 4.9,
     "reviewCount": 87,
@@ -37,7 +39,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product_dress_1_1790064527682.jpg"
+          "/gown_black.jpg"
         ],
         "sizeStock": {
           "XS": 2,
@@ -52,7 +54,7 @@
         "name": "Midnight Navy",
         "hex": "#151E3D",
         "images": [
-          "/product_dress_1_1790064527682.jpg"
+          "http://localhost:3002/uploads/product_1792594440831_rbmt9u5.jpg"
         ],
         "sizeStock": {
           "XS": 2,
@@ -62,10 +64,42 @@
           "XL": 1
         },
         "stock": 6
+      },
+      {
+        "name": "Ecru",
+        "hex": "#c9a84c",
+        "images": [
+          "http://localhost:3002/uploads/product_1792594789601_v20xtl5.jpg"
+        ],
+        "sizeStock": {
+          "XS": 7,
+          "S": 5,
+          "M": 4,
+          "L": 6,
+          "XL": 7
+        },
+        "stock": 29
+      },
+      {
+        "name": "White",
+        "hex": "#ffffff",
+        "images": [
+          "http://localhost:3002/uploads/product_1792594813026_xsxxmjm.jpg"
+        ],
+        "sizeStock": {
+          "XS": 8,
+          "S": 68,
+          "M": 6,
+          "L": 45,
+          "XL": 3
+        },
+        "stock": 130
       }
     ],
     "categoryId": "cat_1792577030464_ux91z",
-    "shortDescription": ""
+    "shortDescription": "",
+    "gender": "women",
+    "collection": true
   },
   {
     "id": "prd_002",
@@ -76,7 +110,7 @@
     "comparePrice": null,
     "category": "blazer",
     "images": [
-      "/product_blazer_1_1790064551000.jpg"
+      "/blazer_black.jpg"
     ],
     "sizes": [
       "XS",
@@ -170,18 +204,20 @@
       }
     ],
     "shortDescription": "",
-    "categoryId": "cat_blazer"
+    "categoryId": "cat_blazer",
+    "gender": "unisex",
+    "collection": true
   },
   {
     "id": "prd_003",
-    "name": "Obsidian Chain Bag",
-    "slug": "obsidian-chain-bag",
+    "name": "Signature Bag Charm",
+    "slug": "signature-bag-charm",
     "description": "A structured top-handle bag in full-grain calfskin leather with 24k gold-plated hardware. The signature chain strap offers versatile carry options. Lined in suede with three interior pockets.",
     "price": 9000000,
     "comparePrice": 10500000,
     "category": "bag",
     "images": [
-      "/product_bag_1_1790064566991.jpg"
+      "http://localhost:3002/uploads/product_1792598739452_0hddxqa.jpg"
     ],
     "sizes": [
       "One Size"
@@ -189,9 +225,11 @@
     "colors": [
       "Black",
       "Cognac",
-      "Ivory"
+      "Ivory",
+      "Navy",
+      "Burgundy"
     ],
-    "stock": 12,
+    "stock": 26,
     "featured": true,
     "rating": 4.95,
     "reviewCount": 62,
@@ -207,7 +245,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product_bag_1_1790064566991.jpg"
+          "http://localhost:3002/uploads/product_1792598739452_0hddxqa.jpg"
         ],
         "sizeStock": {
           "One Size": 4
@@ -218,7 +256,7 @@
         "name": "Cognac",
         "hex": "#9E471A",
         "images": [
-          "/product_bag_1_1790064566991.jpg"
+          "http://localhost:3002/uploads/product_1792598843881_stjtd97.jpg"
         ],
         "sizeStock": {
           "One Size": 4
@@ -229,16 +267,40 @@
         "name": "Ivory",
         "hex": "#FFFFF0",
         "images": [
-          "/product_bag_1_1790064566991.jpg"
+          "http://localhost:3002/uploads/product_1792598835018_yghdpr8.jpg"
         ],
         "sizeStock": {
           "One Size": 4
         },
         "stock": 4
+      },
+      {
+        "name": "Navy",
+        "hex": "#1F2A44",
+        "images": [
+          "http://localhost:3002/uploads/product_1792598824445_yxb3pda.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 6
+        },
+        "stock": 6
+      },
+      {
+        "name": "Burgundy",
+        "hex": "#7B3432",
+        "images": [
+          "http://localhost:3002/uploads/product_1792598867741_zpkfpca.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 8
+        },
+        "stock": 8
       }
     ],
     "categoryId": "cat_bag",
-    "shortDescription": ""
+    "shortDescription": "",
+    "gender": "women",
+    "collection": true
   },
   {
     "id": "prd_004",
@@ -249,7 +311,7 @@
     "comparePrice": null,
     "category": "shoes",
     "images": [
-      "/product_shoes_1_1790064655581.jpg"
+      "/shoes_black.jpg"
     ],
     "sizes": [
       "35",
@@ -282,7 +344,7 @@
         "name": "Black/Gold",
         "hex": "#1A1A1A",
         "images": [
-          "/product_shoes_1_1790064655581.jpg"
+          "/shoes_black.jpg"
         ],
         "sizeStock": {
           "35": 6,
@@ -348,7 +410,9 @@
       }
     ],
     "shortDescription": "",
-    "categoryId": "cat_shoes"
+    "categoryId": "cat_shoes",
+    "gender": "women",
+    "collection": true
   },
   {
     "id": "prd_005",
@@ -432,7 +496,9 @@
       }
     ],
     "shortDescription": "",
-    "categoryId": "cat_coat"
+    "categoryId": "cat_coat",
+    "gender": "unisex",
+    "collection": true
   },
   {
     "id": "prd_006",
@@ -443,7 +509,7 @@
     "comparePrice": null,
     "category": "accessories",
     "images": [
-      "/product_scarf_1_1790064780482.jpg"
+      "/scarf_black.jpg"
     ],
     "sizes": [
       "One Size"
@@ -480,7 +546,7 @@
         "name": "Ivory/Gold",
         "hex": "#FFFFF0",
         "images": [
-          "/product_scarf_1_1790064780482.jpg"
+          "/scarf_ivory.jpg"
         ],
         "sizeStock": {
           "One Size": 10
@@ -500,11 +566,13 @@
       }
     ],
     "shortDescription": "",
-    "categoryId": "cat_accessories"
+    "categoryId": "cat_accessories",
+    "gender": "unisex",
+    "collection": true
   },
   {
     "id": "prd_007",
-    "name": "Exclusive Handcrafted Italian Velvet Cocktail Evening Gown with Draped Cowl Neckline",
+    "name": "Velvet Midi Dress",
     "slug": "velvet-midi-dress",
     "description": "A plush silk-velvet midi dress with a draped cowl neck and fluid A-line silhouette. The bias cut skims the body beautifully. Fully lined in charmeuse. Available in three deep jewel tones for the season.",
     "price": 3200000,
@@ -595,7 +663,9 @@
       }
     ],
     "shortDescription": "",
-    "categoryId": "cat_dress"
+    "categoryId": "cat_dress",
+    "gender": "women",
+    "collection": true
   },
   {
     "id": "prd_008",
@@ -671,7 +741,9 @@
       }
     ],
     "shortDescription": "",
-    "categoryId": "cat_accessories"
+    "categoryId": "cat_accessories",
+    "gender": "unisex",
+    "collection": true
   },
   {
     "id": "prd_009",
@@ -682,7 +754,7 @@
     "comparePrice": 7800000,
     "category": "bag",
     "images": [
-      "/product_bag_1_1790064566991.jpg"
+      "/bag_black.jpg"
     ],
     "sizes": [
       "One Size"
@@ -690,9 +762,12 @@
     "colors": [
       "Black",
       "Taupe",
-      "Navy"
+      "Navy",
+      "Cognac",
+      "Ivory",
+      "Burgundy"
     ],
-    "stock": 6,
+    "stock": 23,
     "featured": false,
     "rating": 4.8,
     "reviewCount": 74,
@@ -708,7 +783,7 @@
         "name": "Black",
         "hex": "#000000",
         "images": [
-          "/product_bag_1_1790064566991.jpg"
+          "/bag_black.jpg"
         ],
         "sizeStock": {
           "One Size": 2
@@ -730,16 +805,51 @@
         "name": "Navy",
         "hex": "#1F2A44",
         "images": [
-          "http://localhost:3002/uploads/product_1792401639668_394ox3g.png"
+          "http://localhost:3002/uploads/product_1792598256069_kkxvlqe.jpg"
         ],
         "sizeStock": {
           "One Size": 2
         },
         "stock": 2
+      },
+      {
+        "name": "Cognac",
+        "hex": "#9E471A",
+        "images": [
+          "http://localhost:3002/uploads/product_1792598318512_kyuudzp.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 0
+        },
+        "stock": 0
+      },
+      {
+        "name": "Ivory",
+        "hex": "#FFFFF0",
+        "images": [
+          "http://localhost:3002/uploads/product_1792598336258_k4a7eua.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 9
+        },
+        "stock": 9
+      },
+      {
+        "name": "Burgundy",
+        "hex": "#7B3432",
+        "images": [
+          "http://localhost:3002/uploads/product_1792598352140_7c47pbn.jpg"
+        ],
+        "sizeStock": {
+          "One Size": 8
+        },
+        "stock": 8
       }
     ],
     "shortDescription": "",
-    "categoryId": "cat_bag"
+    "categoryId": "cat_bag",
+    "gender": "unisex",
+    "collection": false
   },
   {
     "id": "prd_010",
@@ -839,6 +949,8 @@
       }
     ],
     "shortDescription": "",
-    "categoryId": "cat_trousers"
+    "categoryId": "cat_trousers",
+    "gender": "men",
+    "collection": true
   }
 ]

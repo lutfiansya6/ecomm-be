@@ -39,25 +39,37 @@ export async function GET(request: Request) {
   const category = searchParams.get('category') || undefined;
   const featured = searchParams.get('featured');
   const search = searchParams.get('search') || undefined;
-  const sort = searchParams.get('sort') || 'createdAt';
+  const sortParam = searchParams.get('sort');
   const saleParam = searchParams.get('sale');
   const sale = saleParam !== null ? (saleParam === '1' || saleParam === 'true') : undefined;
+  const gender = searchParams.get('gender') || undefined;
+  const collectionParam = searchParams.get('collection');
+  const collection = collectionParam !== null ? (collectionParam === '1' || collectionParam === 'true') : undefined;
+  const section = searchParams.get('section') || undefined;
+  const menu = searchParams.get('menu') || undefined;
 
   const products = db.products.findAll({
     category,
     featured: featured !== null ? featured === 'true' : undefined,
     search,
     sale,
+    gender,
+    collection,
+    section,
+    menu,
   });
 
-  // Sorting
-  if (sort === 'price_asc') products.sort((a, b) => a.price - b.price);
-  else if (sort === 'price_desc') products.sort((a, b) => b.price - a.price);
-  else if (sort === 'rating') products.sort((a, b) => b.rating - a.rating);
-  else if (sort === 'newest' || sort === 'createdAt') {
-    products.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-  } else {
-    products.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  // Sorting: jika sort tidak dikirim dan ada query menu, pertahankan urutan menu
+  const sort = sortParam || (!menu ? 'createdAt' : undefined);
+  if (sort) {
+    if (sort === 'price_asc') products.sort((a, b) => a.price - b.price);
+    else if (sort === 'price_desc') products.sort((a, b) => b.price - a.price);
+    else if (sort === 'rating') products.sort((a, b) => b.rating - a.rating);
+    else if (sort === 'newest' || sort === 'createdAt') {
+      products.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    } else {
+      products.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    }
   }
 
   return successResponse({ products, total: products.length });
@@ -158,6 +170,19 @@ export async function POST(request: Request) {
     return errorResponse('Kategori tidak valid atau tidak ditemukan', 400);
   }
 
+  const rawGender = typeof body.gender === 'string' ? body.gender.trim().toLowerCase() : '';
+  const validGenders = ['women', 'men', 'unisex'];
+  const gender = validGenders.includes(rawGender) ? (rawGender as 'women' | 'men' | 'unisex') : 'unisex';
+
+  const tags = Array.isArray(body.tags) ? (body.tags as string[]) : [];
+  let collection: boolean;
+  if (typeof body.collection === 'boolean') {
+    collection = body.collection;
+  } else {
+    const collectionTags = ['luxury', 'bestseller', 'evening', 'chain', 'wool', 'silk', 'logo'];
+    collection = Boolean(body.featured) || tags.some((t) => collectionTags.includes(t));
+  }
+
   // Derived stock from colorVariants
   const variantStockTotal = sumVariantStock(colorVariants) ?? 0;
 
@@ -171,10 +196,12 @@ export async function POST(request: Request) {
     comparePrice,
     categoryId: matchedCategory.id,
     category: matchedCategory.slug,
+    gender,
+    collection,
     featured: Boolean(body.featured),
     rating: typeof body.rating === 'number' ? body.rating : 0,
     reviewCount: typeof body.reviewCount === 'number' ? body.reviewCount : 0,
-    tags: Array.isArray(body.tags) ? (body.tags as string[]) : [],
+    tags,
     sizes,
     colors: colors ?? [],
     images: images ?? [],
@@ -184,6 +211,14 @@ export async function POST(request: Request) {
   };
 
   const created = db.products.create(product);
+
+  if (Array.isArray(body.menuIds) && body.menuIds.length > 0) {
+    const validMenuIds = body.menuIds.map(String).filter((mid) => Boolean(db.navigation.findById(mid)));
+    if (validMenuIds.length > 0) {
+      db.navigation.setProductMenus(created.id, validMenuIds);
+    }
+  }
+
   return successResponse(created, 201);
 }
 

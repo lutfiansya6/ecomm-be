@@ -91,6 +91,23 @@ export async function PUT(
     body.category = matchedCategory.slug;
   }
 
+  // Validasi gender jika diupdate
+  if (body.gender !== undefined) {
+    const rawGender = typeof body.gender === 'string' ? body.gender.trim().toLowerCase() : '';
+    const validGenders = ['women', 'men', 'unisex'];
+    if (!validGenders.includes(rawGender)) {
+      return errorResponse('gender harus salah satu dari: women, men, unisex', 400);
+    }
+    body.gender = rawGender as 'women' | 'men' | 'unisex';
+  }
+
+  // Validasi collection jika diupdate
+  if (body.collection !== undefined) {
+    if (typeof body.collection !== 'boolean') {
+      return errorResponse('collection harus berupa boolean', 400);
+    }
+  }
+
   // Resolusi daftar ukuran
   const oldSizes = existing.sizes && existing.sizes.length > 0 ? existing.sizes : ['One Size'];
   let targetSizes = oldSizes;
@@ -163,6 +180,12 @@ export async function PUT(
 
   const updated = db.products.update(existing.id, body as Partial<Product>);
   if (!updated) return errorResponse('Produk tidak ditemukan', 404);
+
+  if (Array.isArray(body.menuIds)) {
+    const validMenuIds = body.menuIds.map(String).filter((mid) => Boolean(db.navigation.findById(mid)));
+    db.navigation.setProductMenus(existing.id, validMenuIds);
+  }
+
   return successResponse(updated);
 }
 
